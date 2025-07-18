@@ -11,20 +11,20 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String jobDescrption;
+    private String jobDescription;
     private String minSalary;
     private String maxSalary;
     private String location;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "company_id") // Foreign key column in Job table
     private Company company;
     public Job() {
     }
 
-    public Job(String title, String jobDescrption, String minSalary, String maxSalary, String location) {
+    public Job(String title, String jobDescription, String minSalary, String maxSalary, String location) {
         this.title = title;
-        this.jobDescrption = jobDescrption;
+        this.jobDescription = jobDescription;
         this.minSalary = minSalary;
         this.maxSalary = maxSalary;
         this.location = location;
@@ -46,12 +46,12 @@ public class Job {
         this.title = title;
     }
 
-    public String getjobDescrption() {
-        return jobDescrption;
+    public String getjobDescription() {
+        return jobDescription;
     }
 
-    public void setjobDescrption(String jobDescrption) {
-        this.jobDescrption = jobDescrption;
+    public void setjobDescription(String jobDescription) {
+        this.jobDescription = jobDescription;
     }
 
     public String getMinSalary() {
@@ -85,4 +85,5 @@ public class Job {
     public void setCompany(Company company) {
         this.company = company;
     }
+
 }

@@ -14,10 +14,13 @@ public class Company {
     private String name;
     private String description;
 
-    @OneToMany
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Job> jobs;
 
     //private List<Review> reviews;
+    public Company(){
+
+    }
     public Company(String name) {
         this.name = name;
     }

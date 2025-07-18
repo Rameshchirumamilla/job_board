@@ -1,5 +1,6 @@
 package com.project.MicroservicesSpringBoot.company.impl;
 
+import com.project.MicroservicesSpringBoot.Job.Job;
 import com.project.MicroservicesSpringBoot.company.Company;
 import com.project.MicroservicesSpringBoot.company.CompanyRepository;
 import com.project.MicroservicesSpringBoot.company.CompanyService;
@@ -39,7 +40,11 @@ public class companyServiceImpl implements CompanyService {
 
     @Override
     public Company createCompany(Company company) {
-        companyRepository.save(company);
-        return company;
+        if(company.getJobs() != null){
+            for (Job job: company.getJobs()){
+                job.setCompany(company);
+            }
+        }
+        return companyRepository.save(company);
     }
 }
