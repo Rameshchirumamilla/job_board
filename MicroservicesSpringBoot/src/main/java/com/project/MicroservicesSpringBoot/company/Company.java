@@ -1,6 +1,8 @@
 package com.project.MicroservicesSpringBoot.company;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.project.MicroservicesSpringBoot.Job.Job;
+import com.project.MicroservicesSpringBoot.review.Review;
 import jakarta.persistence.*;
 import org.springframework.boot.autoconfigure.web.WebProperties;
 
@@ -14,13 +16,25 @@ public class Company {
     private String name;
     private String description;
 
-    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    @OneToMany(mappedBy = "company")
     private List<Job> jobs;
 
-    //private List<Review> reviews;
+
+@OneToMany(mappedBy = "company")
+    private List<Review> reviews;
     public Company(){
 
     }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
     public Company(String name) {
         this.name = name;
     }

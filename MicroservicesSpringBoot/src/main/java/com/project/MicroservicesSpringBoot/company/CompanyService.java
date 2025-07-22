@@ -9,5 +9,9 @@ List<Company> getAllCompanies();
 boolean updateCompany(Company company, Long id);
  Company createCompany(Company company);
 
+ boolean deleteCompanyById(Long id);
+
+ Company getCompanyById(Long id);
+
 
 }
